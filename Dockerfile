@@ -12,11 +12,11 @@ COPY ./mvnw ./mvnw
 # Grant execution permission to Maven wrapper
 RUN chmod +x ./mvnw
 
-# Build the application (this will download dependencies and create the JAR file)
-RUN ./mvnw clean package -DskipTests
+# Build the application without caching to ensure JAR creation
+RUN --no-cache ./mvnw clean package -DskipTests
 
-# Copy the generated JAR file to the container
-COPY ./target/sales-savvy-backend-0.0.1-SNAPSHOT.jar app.jar
+# Copy the generated JAR file dynamically
+COPY ./target/*.jar app.jar
 
 # Expose port 8080 to the outside world
 EXPOSE 8080
