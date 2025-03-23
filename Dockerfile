@@ -4,22 +4,20 @@ FROM openjdk:17-jdk-slim
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy Maven files first to leverage caching for dependency installation
-COPY ./pom.xml ./pom.xml
-COPY .mvn .mvn
-COPY ./mvnw ./mvnw
+# Copy all project files to leverage proper Maven build
+COPY . .
 
 # Grant execution permission to Maven wrapper
 RUN chmod +x ./mvnw
 
-# Copy your source code
-COPY ./src ./src
-
 # Build the application
 RUN ./mvnw clean package -DskipTests
+
+# Debugging: List JAR contents to find the main class
+RUN unzip -q -c target/salessavvy-0.0.1-SNAPSHOT.jar META-INF/MANIFEST.MF
 
 # Expose port 8080 to the outside world
 EXPOSE 8080
 
-# Define the command to run the app
+# Use the specific main class name from your project
 ENTRYPOINT ["java", "-jar", "target/salessavvy-0.0.1-SNAPSHOT.jar"]
