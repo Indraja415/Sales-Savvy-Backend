@@ -13,11 +13,11 @@ RUN chmod +x ./mvnw
 # Build the application
 RUN ./mvnw clean package -DskipTests
 
-# Debugging: List JAR contents to find the main class
-RUN unzip -q -c target/salessavvy-0.0.1-SNAPSHOT.jar META-INF/MANIFEST.MF
+# List target directory to see what files were created
+RUN ls -la target/
 
 # Expose port 8080 to the outside world
 EXPOSE 8080
 
-# Use the specific main class name from your project
-ENTRYPOINT ["java", "-jar", "target/salessavvy-0.0.1-SNAPSHOT.jar"]
+# Use the jar command to examine the manifest
+CMD ["sh", "-c", "java -jar target/salessavvy-0.0.1-SNAPSHOT.jar"]
