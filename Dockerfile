@@ -13,7 +13,7 @@ COPY ./mvnw ./mvnw
 RUN chmod +x ./mvnw
 
 # Build the application without caching to ensure JAR creation
-RUN --no-cache ./mvnw clean package -DskipTests
+RUN ./mvnw clean package -DskipTests
 
 # Copy the generated JAR file dynamically
 COPY ./target/*.jar app.jar
