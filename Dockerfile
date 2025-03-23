@@ -18,7 +18,7 @@ RUN ls
 RUN pwd
 # Copy the generated JAR file dynamically
 #COPY ./target/*.jar app.jar
-COPY /app/target/salessavvy-0.0.1-SNAPSHOT.jar app.jar
+COPY ./target/salessavvy-0.0.1-SNAPSHOT.jar app.jar
 RUN ls
 RUN pwd
 # Expose port 8080 to the outside world
