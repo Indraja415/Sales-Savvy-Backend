@@ -14,10 +14,13 @@ RUN chmod +x ./mvnw
 
 # Build the application without caching to ensure JAR creation
 RUN ./mvnw clean package -DskipTests
-
+ls
+pwd
 # Copy the generated JAR file dynamically
-COPY ./target/*.jar app.jar
-
+#COPY ./target/*.jar app.jar
+COPY /app/target/salessavvy-0.0.1-SNAPSHOT.jar app.jar
+ls
+pwd
 # Expose port 8080 to the outside world
 EXPOSE 8080
 
