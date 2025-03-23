@@ -82,7 +82,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             <configuration>
-                <mainClass>com.example.SalesSavvyApplication</mainClass> <!-- Check your main class here -->
+                <mainClass>com.example.demo.SalesSavvyApplication</mainClass> <!-- Check your main class here -->
             </configuration>
             </plugin>
         </plugins>
