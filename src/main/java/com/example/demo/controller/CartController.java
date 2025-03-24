@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5174", allowCredentials = "true")
+//@CrossOrigin(origins = "http://localhost:5174", allowCredentials = "true")
+@CrossOrigin(origins = {"https://sales-savvy-app-fe.vercel.app", "http://localhost:5174"}, allowCredentials = "true")
 @RequestMapping("/api/cart")
 public class CartController {
 
@@ -51,7 +52,8 @@ public class CartController {
 
     // Add an item to the cart
     @PostMapping("/add")
-    @CrossOrigin(origins = "http://localhost:5174", allowCredentials = "true")
+    //@CrossOrigin(origins = "http://localhost:5174", allowCredentials = "true")
+    @CrossOrigin(origins = {"https://sales-savvy-app-fe.vercel.app", "http://localhost:5174"}, allowCredentials = "true")
     public ResponseEntity<Void> addToCart(@RequestBody Map<String, Object> request) {
         String username = (String) request.get("username");
         int productId = (int) request.get("productId");
