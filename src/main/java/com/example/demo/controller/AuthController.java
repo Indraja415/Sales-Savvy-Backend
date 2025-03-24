@@ -20,7 +20,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
-@CrossOrigin(origins = "*", allowCredentials = "true")
+@CrossOrigin(origins = "sales-savvy-app-fe.vercel.app", allowCredentials = "true")
 @RequestMapping("/api/auth")
 
 public class AuthController {
@@ -38,7 +38,7 @@ public class AuthController {
 
             Cookie cookie = new Cookie("authToken", token);
             cookie.setHttpOnly(true);
-            cookie.setSecure(true); // Set to true if using HTTPS
+            cookie.setSecure(false); // Set to true if using HTTPS
             cookie.setPath("/");
             cookie.setMaxAge(3600); // 1 hour
             cookie.setDomain("localhost");
